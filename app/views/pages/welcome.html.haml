@@ -1,6 +1,5 @@
-%h1 Hi!
-
 %ol
   - @snapshots.each do |snapshot|
     %li
+      = snapshot.capture_time
       = image_tag(snapshot.snapshot_url)

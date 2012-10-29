@@ -1,13 +1,17 @@
+.row-fluid
+  .span6
+    #container
+      %img#current_image
+
+.row-fluid
+  .span6
+    #slider{:style => 'width: 500px;'}
+
 %ol.images.hidden
   - @snapshots.each do |snapshot|
     %li
       = snapshot.capture_time
       = image_tag(snapshot.snapshot_url)
-
-#container
-  %img#current_image
-
-#slider{:style => 'width: 500px;'}
 
 :javascript
   $(function() {

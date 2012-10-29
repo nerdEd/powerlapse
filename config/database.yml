@@ -1,7 +1,13 @@
 development:
   adapter: postgresql
+  encoding: unicode
+  host: localhost
   database: powerlapse_dev
+  user: nerded
 
 test:
   adapter: postgresql
+  encoding: unicode
+  host: localhost
   database: powerlapse_test
+  user: nerded

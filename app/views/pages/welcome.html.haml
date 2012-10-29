@@ -21,8 +21,9 @@
     $('#slider').slider({
       min: 1,
       max: images.size(),
-      change: function(event, ui) {
+      slide: function(event, ui) {
         container.attr('src', $(images[ui.value]).attr('src'));
       },
+      value: 1
     });
   });

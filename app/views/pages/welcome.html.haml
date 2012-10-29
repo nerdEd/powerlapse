@@ -1,5 +1,24 @@
-%ol
+%ol.images.hidden
   - @snapshots.each do |snapshot|
     %li
       = snapshot.capture_time
       = image_tag(snapshot.snapshot_url)
+
+#container
+  %img#current_image
+
+#slider
+
+:javascript
+  $(function() {
+    var container = $('#container #current_image');
+    var images = $('ol.images li img');
+    container.attr('src', $(images[0]).attr('src'));
+    $('#slider').slider({
+      min: 1,
+      max: images.size(),
+      change: function(event, ui) {
+        container.attr('src', $(images[ui.value]).attr('src'));
+      }
+    });
+  });

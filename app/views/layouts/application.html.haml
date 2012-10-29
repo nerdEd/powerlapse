@@ -15,22 +15,24 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="images/favicon.ico" rel="shortcut icon")
+    %link{href: asset_path('favicon.ico'), rel: "shortcut icon"}
 
 
   %body
-    .navbar.navbar-fluid-top
+    .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
+        .container
           %a.brand(href="#{root_url}")
             PowerLapse
           %a.brand.pull-right{href: "http://www.inthebackforty.com", style: "float: right !important;"}
             by
             = image_tag 'http://www.inthebackforty.com/assets/logo.png', :height => height = 20, :width => height * 225 / 44
 
-    .container-fluid
+    .container
 
-      .row-fluid
+      .row
+        .span9
+          = yield
         .span3
           .well.sidebar-nav
             %ul.nav.nav-list
@@ -60,8 +62,6 @@
 
             %h4 Sources
             %p We're using the public BGE outage map page to populate this timelapse. You can see it on their website #{link_to 'here', 'http://www.bge.com/customerservice/stormsoutages/currentoutages/pages/default.aspx'}.
-        .span9
-          = yield
     
       %footer
         %p &copy; Ed Schmalzle 2012

@@ -25,7 +25,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-              %a.brand(href="#{root_url}") PowerLapse
+          %a.brand(href="#{root_url}") PowerLapse
           .container.nav-collapse
             %ul.nav
 
@@ -36,6 +36,13 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header Key
+              %li #{image_tag('MapDot_Pink.jpeg')} 1-15
+              %li #{image_tag('MapDot_Purple.jpeg')} 16-30
+              %li #{image_tag('MapDot_Blue.jpeg')} 31-50
+              %li #{image_tag('MapDot_Green.jpeg')} 51-250
+              %li #{image_tag('MapDot_Yellow.jpeg')} 251-1,000
+              %li #{image_tag('MapDot_Orange.jpeg')} 1,001-2,500
+              %li #{image_tag('MapDot_Red.jpeg')} 2,500-10,000
         .span9
           = yield
     

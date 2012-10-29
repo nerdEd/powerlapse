@@ -5,7 +5,7 @@ namespace :powerlapse do
   task :scrape_snapshot => :environment do
     time = Time.now
     s = Snapshot.new(:capture_time => time, :name => time.to_s)
-    s.snapshot = open('http://bgeoutage.bge.com/ServiceArea.jpg').read
+    s.snapshot = open('http://bgeoutage.bge.com/ServiceArea.jpg')
     s.save
   end
 end

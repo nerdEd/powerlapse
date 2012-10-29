@@ -1,5 +1,5 @@
 class Snapshot < ActiveRecord::Base
-  attr_accessible :capture_time, :remote_snap
+  attr_accessible :capture_time
 
   mount_uploader :snapshot, SnapshotUploader
 end

@@ -7,7 +7,7 @@
 #container
   %img#current_image
 
-#slider
+#slider{:style => 'width: 500px;'}
 
 :javascript
   $(function() {
@@ -19,6 +19,6 @@
       max: images.size(),
       change: function(event, ui) {
         container.attr('src', $(images[ui.value]).attr('src'));
-      }
+      },
     });
   });

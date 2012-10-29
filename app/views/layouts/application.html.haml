@@ -22,13 +22,11 @@
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#{root_url}") PowerLapse
-          .container.nav-collapse
-            %ul.nav
+          %a.brand(href="#{root_url}")
+            PowerLapse
+          %a.brand.pull-right{href: "http://www.inthebackforty.com", style: "float: right !important;"}
+            by
+            = image_tag 'http://www.inthebackforty.com/assets/logo.png', :height => height = 20, :width => height * 225 / 44
 
     .container-fluid
 

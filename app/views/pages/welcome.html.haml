@@ -1,20 +1,16 @@
-.row-fluid
+.row
   .span6
     %h2#current_title= @snapshots.last.title
 
-.row-fluid
-  .span6
-    #container
-      %img#current_image
+.row
+  #container.span9
+    %img#current_image
+    #slider
 
-.row-fluid
-  .span6
-    #slider{:style => 'width: 500px;'}
-.row-fluid
-  .span2
+.row
+  .pull-left
     %h3 earlier
-  .span3
-  .span2
+  .pull-right
     %h3 now
 
 %ol.images.hidden

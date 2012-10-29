@@ -1,29 +1,49 @@
 .row-fluid
   .span6
+    %h2#current_title= @snapshots.last.title
+
+.row-fluid
+  .span6
     #container
       %img#current_image
 
 .row-fluid
   .span6
     #slider{:style => 'width: 500px;'}
+.row-fluid
+  .span2
+    %h3 earlier
+  .span3
+  .span2
+    %h3 now
 
 %ol.images.hidden
   - @snapshots.each do |snapshot|
     %li
       = snapshot.capture_time
-      = image_tag(snapshot.snapshot_url)
+      = image_tag(snapshot.snapshot_url, :alt => snapshot.title)
 
 :javascript
   $(function() {
     var container = $('#container #current_image');
     var images = $('ol.images li img');
-    container.attr('src', $(images[0]).attr('src'));
+    var size = images.size() -1;
+    container.attr('src', $(images[size]).attr('src'));
     $('#slider').slider({
       min: 1,
-      max: images.size(),
+      max: size,
       slide: function(event, ui) {
-        container.attr('src', $(images[ui.value]).attr('src'));
+        var currentImage = $(images[ui.value]);
+        container.attr('src', currentImage.attr('src'));
+        container.attr('alt', currentImage.attr('alt'));
+        $('#current_title').text(currentImage.attr('alt'));
       },
-      value: 1
+      change: function(event, ui) {
+        var currentImage = $(images[ui.value]);
+        container.attr('src', currentImage.attr('src'));
+        container.attr('alt', currentImage.attr('alt'));
+        $('#current_title').text(currentImage.attr('alt'));
+      },
+      value: size
     });
   });

@@ -1,6 +1,10 @@
 .row
   .span6
     %h2#current_title= @snapshots.last.title
+  .pull-right
+    %h2
+      %a.btn.animationControl.play Animate
+      %a.btn.animationControl.pause.hidden Stop Animation
 
 .row
   #container.span9
@@ -20,10 +24,36 @@
       = image_tag(snapshot.snapshot_url, :alt => snapshot.title)
 
 :javascript
+  var animationTimeout;
+
+  var animateSlider = function() {
+    $('a.play').addClass('hidden');
+    $('a.pause').removeClass('hidden');
+    var max = $('#slider').slider('option', 'max');
+    var pos = $('#slider').slider('option', 'value');
+    if(pos < max) {
+      $('#slider').slider('option', 'value', pos+1);
+      animationTimeout = setTimeout(function(){animateSlider()}, 200);
+    } else {
+      $('#slider').slider('option', 'value', 0);
+      animationTimeout = setTimeout(function(){animateSlider()}, 300);
+    }
+  };
+
   $(function() {
+    $('a.play').click(function() {
+      animationTimeout = setTimeout(animateSlider(), 0);
+    });
+
+    $('a.pause').click(function() {
+      $('a.animationControl').toggleClass('hidden');
+      clearTimeout(animationTimeout);
+    });
+
     var container = $('#container #current_image');
     var images = $('ol.images li img');
     var size = images.size() -1;
+
     container.attr('src', $(images[size]).attr('src'));
     $('#slider').slider({
       min: 1,
@@ -40,6 +70,7 @@
         container.attr('alt', currentImage.attr('alt'));
         $('#current_title').text(currentImage.attr('alt'));
       },
-      value: size
+      value: size,
+      animate: true
     });
   });

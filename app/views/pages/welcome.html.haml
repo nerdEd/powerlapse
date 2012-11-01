@@ -8,7 +8,7 @@
 
 .row
   #container.span9
-    %img#current_image
+    %img#current_image{:src => @snapshots.last.snapshot_url}
     #slider
 
 .row

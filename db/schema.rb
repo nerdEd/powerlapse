@@ -11,13 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029172643) do
+ActiveRecord::Schema.define(:version => 20121105201202) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "snapshot_animations", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "event_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "animation"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "snapshot_animations_snapshots", :force => true do |t|
+    t.integer "snapshot_animation_id"
+    t.integer "snapshot_id"
+  end
 
   create_table "snapshots", :force => true do |t|
     t.datetime "capture_time"
     t.string   "snapshot"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "event_id"
   end
 
 end

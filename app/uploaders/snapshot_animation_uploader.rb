@@ -1,3 +1,3 @@
-class SnapshotAnimationUploader < CarrierWave::Uploaded::Base
+class SnapshotAnimationUploader < CarrierWave::Uploader::Base
   storage :fog
 end
